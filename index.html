@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFTFANS TOKEN</title>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1002.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1e1e1e; /* Dark background */
+        color: #fff; /* Light text */
+    }
+    .container {
+        width: 90%;
+        max-width: 600px; /* Max width of 600px */
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #333; /* Dark container background */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    }
+    textarea {
+        width: calc(100% - 22px); /* Adjusting for padding */
+        height: 100px;
+        padding: 10px;
+        border: 1px solid #555; /* Dark border */
+        border-radius: 5px;
+        margin-bottom: 10px;
+        background-color: #222; /* Dark textarea background */
+        color: #fff; /* Light text */
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #2081e2; /* Green button */
+        color: #fff; /* Light text */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    button:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+    .comments {
+        margin-top: 20px;
+    }
+    .comment {
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 10px; /* Adjust font size */
+        color: #ffffff; /* Random comment font color */
+        position: relative;
+    }
+    .comment svg {
+        width: 25px;
+        height: 25px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .comment-text {
+        padding-top: 10px;
+    }
+    .error {
+        color: red;
+    }
+    .total-entries {
+        margin-top: 10px;
+        text-align: center;
+    }
+	.total-entries-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.total-entries-container span {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #4caf50; /* Green background */
+    color: #fff; /* Light text */
+    border-radius: 5px;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="text-align: center;">NFT FANS TOKEN</h2>
+<p style="text-align: center; font-size: 11px; color: #ccc;">Hello NFT FANS COMMUNITY! Only drop your $matic address. <br> Also add a random message in support of $nftfan Token <br> Make sure you follow us on X @nftfanstoken <br> We will drop 5B free $nftfan tokens to your wallet. <br> If you want to collect more tokens buy our NFTs.</p>
+
+    <textarea id="commentText" placeholder="Enter your message here..."></textarea>
+    <button onclick="postComment()">Post</button>
+    <div class="total-entries-container">
+     <span id="totalEntries"></span>
+</div>
+
+    <div class="error" id="errorMessage"></div>
+    
+    <div class="comments" id="commentsSection">
+        <!-- Comments will be displayed here -->
+    </div>
+</div>
+
+<script>
+    // Configure AWS SDK
+    AWS.config.update({
+        region: 'eu-north-1',
+        credentials: new AWS.Credentials('AKIAVRUVVVUM4LQ3RDUF', 'WYQwQKduC8wF+7tEOASMOwqlDdS6LlAIr4x1R5U0')
+    });
+    
+    var dynamodb = new AWS.DynamoDB.DocumentClient();
+    var tableName = 'prefan'; // Updated table name
+    
+    // Load comments from DynamoDB when the page loads
+    window.onload = function() {
+        loadComments();
+    };
+    
+    function postComment() {
+        var commentText = document.getElementById("commentText").value;
+        if(commentText.trim() === "") {
+            displayError("Please enter a comment!");
+            return;
+        }
+        
+        var params = {
+    TableName: tableName,
+    Item: {
+        prefan: Date.now().toString(), // Primary key attribute
+        commentId: 'comment_' + Date.now().toString(), // Unique comment ID
+        text: commentText,
+        dateTime: new Date().toISOString() // Date and time attribute
+    }
+};
+
+        
+        dynamodb.put(params, function(err, data) {
+            if (err) {
+                displayError("Error saving comment to DynamoDB: " + err.message);
+            } else {
+                clearError();
+                console.log("Successfully saved comment to DynamoDB", data);
+                loadComments(); // Reload comments after saving
+                updateTotalEntries(); // Update total entries count
+            }
+        });
+        
+        // Clear the textarea after posting the comment
+        document.getElementById("commentText").value = "";
+
+        // Add animation to button
+        var button = document.querySelector('button');
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            button.style.transform = 'scale(1)';
+        }, 100);
+    }
+    
+    function loadComments() {
+        var params = {
+            TableName: tableName
+        };
+        
+        dynamodb.scan(params, function(err, data) {
+            if (err) {
+                displayError("Error loading comments from DynamoDB: " + err.message);
+            } else {
+                clearError();
+                console.log("Successfully loaded comments from DynamoDB", data);
+                displayComments(data.Items);
+                updateTotalEntries(data.Items.length); // Update total entries count
+            }
+        });
+    }
+    
+  function displayComments(comments) {
+    var commentsSection = document.getElementById("commentsSection");
+    commentsSection.innerHTML = ""; // Clear existing comments
+    
+    // Sort comments by date in descending order (latest first)
+    comments.sort(function(a, b) {
+        return new Date(b.dateTime) - new Date(a.dateTime);
+    });
+    
+    comments.forEach(function(comment) {
+        var commentNode = document.createElement("div");
+        commentNode.className = "comment";
+		
+		// Generate random number for NFTFAN #
+    var randomNFTFAN = Math.floor(Math.random() * 1000); // Random number
+    
+    // Text for NFTFAN #
+    var nftfanText = document.createElement("div");
+    nftfanText.textContent = "NFTFAN #" + randomNFTFAN; // Text content
+    commentNode.appendChild(nftfanText);
+        
+// Array of emojis
+var emojis = ["🇦🇨", "🇦🇩", "🇦🇪", "🇦🇫", "🇦🇬", "🇦🇮", "🇦🇱", "🇦🇲", "🇦🇴", "🇦🇶", "🇦🇷", "🇦🇸", "🇦🇹", "🇦🇺", "🇦🇼", "🇦🇽", "🇦🇿", "🇧🇦", "🇧🇧", "🇧🇩", "🇧🇪", "🇧🇫", "🇧🇬", "🇧🇭", "🇧🇮", "🇧🇯", "🇧🇱", "🇧🇲", "🇧🇳", "🇧🇴", "🇧🇶", "🇧🇷", "🇧🇸", "🇧🇹", "🇧🇻", "🇧🇼", "🇧🇾", "🇧🇿", "🇨🇦", "🇨🇨", "🇨🇩", "🇨🇫", "🇨🇬", "🇨🇭", "🇨🇮", "🇨🇰", "🇨🇱", "🇨🇲", "🇨🇳", "🇨🇴", "🇨🇵", "🇨🇷", "🇨🇺", "🇨🇻", "🇨🇼", "🇨🇽", "🇨🇾", "🇨🇿", "🇩🇪", "🇩🇬", "🇩🇯", "🇩🇰", "🇩🇲", "🇩🇴", "🇩🇿", "🇪🇦", "🇪🇨", "🇪🇪", "🇪🇬", "🇪🇭", "🇪🇷", "🇪🇸", "🇪🇹", "🇪🇺", "🇫🇮", "🇫🇯", "🇫🇰", "🇫🇲", "🇫🇴", "🇫🇷", "🇬🇦", "🇬🇧", "🇬🇩", "🇬🇪", "🇬🇫", "🇬🇬", "🇬🇭", "🇬🇮", "🇬🇱", "🇬🇲", "🇬🇳", "🇬🇵", "🇬🇶", "🇬🇷", "🇬🇸", "🇬🇹", "🇬🇺", "🇬🇼", "🇬🇾", "🇭🇰", "🇭🇲", "🇭🇳", "🇭🇷", "🇭🇹", "🇭🇺", "🇮🇨", "🇮🇩", "🇮🇪", "🇮🇱", "🇮🇲", "🇮🇳", "🇮🇴", "🇮🇶", "🇮🇷", "🇮🇸", "🇮🇹", "🇯🇪", "🇯🇲", "🇯🇴", "🇯🇵", "🇰🇪", "🇰🇬", "🇰🇭", "🇰🇮", "🇰🇲", "🇰🇳", "🇰🇵", "🇰🇷", "🇰🇼", "🇰🇾", "🇰🇿", "🇱🇦", "🇱🇧", "🇱🇨", "🇱🇮", "🇱🇰", "🇱🇷", "🇱🇸", "🇱🇹", "🇱🇺", "🇱🇻", "🇱🇾", "🇲🇦", "🇲🇨", "🇲🇩", "🇲🇪", "🇲🇫", "🇲🇬", "🇲🇭", "🇲🇰", "🇲🇱", "🇲🇲", "🇲🇳", "🇲🇴", "🇲🇵", "🇲🇶", "🇲🇷", "🇲🇸", "🇲🇹", "🇲🇺", "🇲🇻", "🇲🇼", "🇲🇽", "🇲🇾", "🇲🇿", "🇳🇦", "🇳🇨", "🇳🇪", "🇳🇫", "🇳🇬", "🇳🇮", "🇳🇱", "🇳🇴", "🇳🇵", "🇳🇷", "🇳🇺", "🇳🇿", "🇴🇲", "🇵🇦", "🇵🇪", "🇵🇫", "🇵🇬", "🇵🇭", "🇵🇰", "🇵🇱", "🇵🇲", "🇵🇳", "🇵🇷", "🇵🇸", "🇵🇹", "🇵🇼", "🇵🇾", "🇶🇦", "🇷🇪", "🇷🇴", "🇷🇸", "🇷🇺", "🇷🇼", "🇸🇦", "🇸🇧", "🇸🇨", "🇸🇩", "🇸🇪", "🇸🇬", "🇸🇭", "🇸🇮", "🇸🇯", "🇸🇰", "🇸🇱", "🇸🇲", "🇸🇳", "🇸🇴", "🇸🇷", "🇸🇸", "🇸🇹", "🇸🇻", "🇸🇽", "🇸🇾", "🇸🇿", "🇹🇦", "🇹🇨", "🇹🇩", "🇹🇫", "🇹🇬", "🇹🇭", "🇹🇯", "🇹🇰", "🇹🇱", "🇹🇲", "🇹🇳", "🇹🇴", "🇹🇷", "🇹🇹", "🇹🇻", "🇹🇼", "🇹🇿", "🇺🇦", "🇺🇬", "🇺🇲", "🇺🇳", "🇺🇸", "🇺🇾", "🇺🇿", "🇻🇦", "🇻🇨", "🇻🇪", "🇻🇬", "🇻🇮", "🇻🇳", "🇻🇺", "🇼🇫", "🇼🇸", "🇽🇰", "🇾🇪", "🇾🇹", "🇿🇦", "🇿🇲", "🇿🇼"];
+
+// Selecting a random emoji
+var randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+// Display date, time, and random emoji
+var dateTimeNode = document.createElement("div");
+dateTimeNode.textContent = randomEmoji + " " + new Date(comment.dateTime).toLocaleString();
+dateTimeNode.style.position = "absolute";
+dateTimeNode.style.top = "0";
+dateTimeNode.style.right = "0";
+dateTimeNode.style.color = "#555555"; // Set color to #555555
+commentNode.appendChild(dateTimeNode);
+
+
+        
+        // Create SVG element for avatar
+        var imageId = Math.floor(Math.random() * 1000); // Random image ID
+        var svgSrc = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${imageId}`;
+        var svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svgElement.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+        svgElement.innerHTML = `<image xlink:href="${svgSrc}" width="25" height="25" />`;
+        commentNode.appendChild(svgElement);
+        
+       // Check if the comment text contains a URL
+// Check if the comment text contains a URL
+var commentText = comment.text;
+var urlRegex = /(https?:\/\/[^\s]+)/g;
+var urlMatches = commentText.match(urlRegex);
+if (urlMatches && urlMatches.length > 0) {
+    // If a URL is present, create and append the image element
+    var imageUrl = urlMatches[0]; // Assuming only one URL is present
+    var additionalImage = document.createElement("img");
+    additionalImage.src = imageUrl;
+    additionalImage.width = 100;
+    
+    // Apply rounded corners to the image
+    additionalImage.style.borderRadius = "2px"; // You can adjust the radius as needed
+    
+    commentNode.appendChild(additionalImage);
+}
+
+
+        
+        // Create text element
+        var textNode = document.createElement("div");
+        textNode.className = "comment-text";
+        textNode.textContent = commentText;
+        commentNode.appendChild(textNode);
+
+        commentsSection.appendChild(commentNode);
+    });
+}
+
+
+
+
+
+    
+    function displayError(message) {
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = message;
+    }
+    
+    function clearError() {
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "";
+    }
+
+    function updateTotalEntries(count) {
+        var totalEntries = document.getElementById("totalEntries");
+        totalEntries.textContent = `Total Entries: ${count}`;
+    }
+</script>
+
+</body>
+</html>
