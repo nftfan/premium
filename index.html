@@ -80,7 +80,8 @@
 <body>
 
 <div class="container">
-    <h1>NFTFAN PREMIUM MEMBERS</h1>
+    <h1 style="font-size: 20px;">NFTFAN PREMIUM MEMBERS</h1>
+
     <div class="image-container">
         <div class="moving-images">
 		<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
@@ -215,15 +216,27 @@
         cell1.textContent = wallet.address;
         cell1.style.fontSize = "10px"; // Set font size to 10px
         
-        // Check if wallet address is in the walletStatus object
+        // Create a tab element for status display
+        var statusTab = document.createElement("div");
+        statusTab.textContent = walletStatus.hasOwnProperty(wallet.address) ? walletStatus[wallet.address] : "Pending";
+        statusTab.style.padding = "5px 10px";
+        statusTab.style.borderRadius = "5px";
+        statusTab.style.fontSize = "10px";
+        
+        // Apply styles based on status
         if (walletStatus.hasOwnProperty(wallet.address)) {
-            cell2.textContent = walletStatus[wallet.address];
+            statusTab.style.backgroundColor = "green"; // Active status with green background
+            statusTab.style.color = "white"; // Active status text color
         } else {
-            cell2.textContent = "Pending";
+            statusTab.style.backgroundColor = "red"; // Pending status with red background
+            statusTab.style.color = "white"; // Pending status text color
         }
-        cell2.style.fontSize = "10px"; // Set font size to 10px
+        
+        // Append status tab to the cell
+        cell2.appendChild(statusTab);
     });
 }
+
 
 
 
