@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NFTFANS TOKEN</title>
+<title>NFTFAN PREMIUM MEMBERS</title>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1002.0.min.js"></script>
 <style>
     body {
@@ -17,22 +15,53 @@
     }
     .container {
         width: 90%;
-        max-width: 600px; /* Max width of 600px */
+        max-width: 800px; /* Max width of 800px */
         margin: 0 auto;
         padding: 20px;
-        background-color: #333; /* Dark container background */
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        text-align: center; /* Center align content */
     }
-    textarea {
-        width: calc(100% - 22px); /* Adjusting for padding */
-        height: 100px;
+    h1 {
+        margin-bottom: 20px;
+    }
+    .image-container {
+        border-radius: 10px;
+        border: 2px solid #2081e2; /* Blue border */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        overflow: hidden; /* Hide overflowing images */
+        margin-bottom: 20px;
+    }
+    .moving-images {
+        display: flex;
+        overflow-x: auto; /* Horizontal scrolling for images */
+    }
+    .moving-images img {
+        max-height: 200px; /* Adjust image height */
+        margin: 10px;
+        border-radius: 10px; /* Rounded corners */
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
         padding: 10px;
-        border: 1px solid #555; /* Dark border */
+        border-bottom: 1px solid #555; /* Dark border */
+        text-align: left;
+    }
+    th {
+        background-color: #2081e2; /* Green background */
+        color: #fff; /* Light text */
+    }
+    td {
+        background-color: #222; /* Dark background */
+    }
+    input[type="text"] {
+        width: calc(100% - 200px); /* Adjust input width */
+        padding: 10px;
+        border: none;
         border-radius: 5px;
         margin-bottom: 10px;
-        background-color: #222; /* Dark textarea background */
-        color: #fff; /* Light text */
     }
     button {
         padding: 10px 20px;
@@ -46,69 +75,47 @@
     button:hover {
         background-color: #45a049; /* Darker green on hover */
     }
-    .comments {
-        margin-top: 20px;
-    }
-    .comment {
-        padding: 10px;
-        border: 1px solid #555;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        font-size: 10px; /* Adjust font size */
-        color: #ffffff; /* Random comment font color */
-        position: relative;
-    }
-    .comment svg {
-        width: 25px;
-        height: 25px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-    }
-    .comment-text {
-        padding-top: 10px;
-    }
-    .error {
-        color: red;
-    }
-    .total-entries {
-        margin-top: 10px;
-        text-align: center;
-    }
-	.total-entries-container {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.total-entries-container span {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #4caf50; /* Green background */
-    color: #fff; /* Light text */
-    border-radius: 5px;
-}
-
-
-
-
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2 style="text-align: center;">NFT FANS TOKEN</h2>
-<p style="text-align: center; font-size: 11px; color: #ccc;">Hello NFT FANS COMMUNITY! Only drop your $matic address. <br> Also add a random message in support of $nftfan Token <br> Make sure you follow us on X @nftfanstoken <br> We will drop 5B free $nftfan tokens to your wallet. <br> If you want to collect more tokens buy our NFTs.</p>
-
-    <textarea id="commentText" placeholder="Enter your message here..."></textarea>
-    <button onclick="postComment()">Post</button>
-    <div class="total-entries-container">
-     <span id="totalEntries"></span>
-</div>
-
-    <div class="error" id="errorMessage"></div>
-    
-    <div class="comments" id="commentsSection">
-        <!-- Comments will be displayed here -->
+    <h1>NFTFAN PREMIUM MEMBERS</h1>
+    <div class="image-container">
+        <div class="moving-images">
+		<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
+            <img src="https://i.seadn.io/s/raw/files/0ebbb12515a30af8632e6557fea55565.png?auto=format&dpr=1&w=1000" alt="Image 1">
+            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
+			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
+            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
+			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
+            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
+			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
+            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
+			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
+            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
+            <!-- Add more images here -->
+        </div>
     </div>
+    
+    <p style="font-size: 11px;">To activate your premium membership Pay 1 $matic subscription fee to: 0x92d550cdbc234211957bd1b579d962c885a127ba.</p>
+
+
+    <input type="text" id="walletAddress" placeholder="Enter your wallet address">
+    <button onclick="addWallet()">SUBSCRIBE</button>
+
+   <table>
+    <thead>
+        <tr>
+            <th style="font-size: 10px;">Wallet Address</th>
+            <th style="font-size: 10px;">Subscription Status</th>
+        </tr>
+    </thead>
+    <tbody id="walletList">
+        <!-- Wallet addresses will be displayed here -->
+    </tbody>
+</table>
+
 </div>
 
 <script>
@@ -117,168 +124,109 @@
         region: 'eu-north-1',
         credentials: new AWS.Credentials('AKIAVRUVVVUM4LQ3RDUF', 'WYQwQKduC8wF+7tEOASMOwqlDdS6LlAIr4x1R5U0')
     });
-    
+
     var dynamodb = new AWS.DynamoDB.DocumentClient();
     var tableName = 'prefan'; // Updated table name
-    
-    // Load comments from DynamoDB when the page loads
+
+    // Load wallet addresses from DynamoDB when the page loads
     window.onload = function() {
-        loadComments();
+        loadWallets();
     };
-    
-    function postComment() {
-        var commentText = document.getElementById("commentText").value;
-        if(commentText.trim() === "") {
-            displayError("Please enter a comment!");
+
+    function addWallet() {
+        var walletAddress = document.getElementById("walletAddress").value.trim();
+        var walletRegex = /^(0x)?[0-9a-fA-F]{40}$/; // Regular expression to validate Ethereum wallet addresses
+
+        if (!walletRegex.test(walletAddress)) {
+            alert("Please enter a valid Ethereum wallet address!");
             return;
         }
-        
-        var params = {
-    TableName: tableName,
-    Item: {
-        prefan: Date.now().toString(), // Primary key attribute
-        commentId: 'comment_' + Date.now().toString(), // Unique comment ID
-        text: commentText,
-        dateTime: new Date().toISOString() // Date and time attribute
-    }
-};
 
-        
+        // Check if the wallet already exists
+        var existingWallets = document.querySelectorAll("#walletList td:first-child");
+        for (var i = 0; i < existingWallets.length; i++) {
+            if (existingWallets[i].textContent === walletAddress) {
+                alert("This wallet address is already added.");
+                return;
+            }
+        }
+
+        var params = {
+            TableName: tableName,
+            Item: {
+                prefan: Date.now().toString(), // Primary key attribute
+                walletId: 'wallet_' + Date.now().toString(), // Unique wallet ID
+                address: walletAddress,
+                dateTime: new Date().toISOString() // Date and time attribute
+            }
+        };
+
         dynamodb.put(params, function(err, data) {
             if (err) {
-                displayError("Error saving comment to DynamoDB: " + err.message);
+                alert("Error adding wallet to DynamoDB: " + err.message);
             } else {
-                clearError();
-                console.log("Successfully saved comment to DynamoDB", data);
-                loadComments(); // Reload comments after saving
-                updateTotalEntries(); // Update total entries count
+                console.log("Successfully added wallet to DynamoDB", data);
+                loadWallets(); // Reload wallets after adding
+
+                // Animate the newly added wallet
+                var newWalletRow = document.querySelector("#walletList tr:last-child");
+                newWalletRow.style.opacity = 0;
+                setTimeout(function() {
+                    newWalletRow.style.transition = "opacity 1s";
+                    newWalletRow.style.opacity = 1;
+                }, 100);
             }
         });
-        
-        // Clear the textarea after posting the comment
-        document.getElementById("commentText").value = "";
 
-        // Add animation to button
-        var button = document.querySelector('button');
-        button.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            button.style.transform = 'scale(1)';
-        }, 100);
+        // Clear input field
+        document.getElementById("walletAddress").value = "";
     }
-    
-    function loadComments() {
+
+    function loadWallets() {
         var params = {
             TableName: tableName
         };
-        
+
         dynamodb.scan(params, function(err, data) {
             if (err) {
-                displayError("Error loading comments from DynamoDB: " + err.message);
+                alert("Error loading wallets from DynamoDB: " + err.message);
             } else {
-                clearError();
-                console.log("Successfully loaded comments from DynamoDB", data);
-                displayComments(data.Items);
-                updateTotalEntries(data.Items.length); // Update total entries count
+                displayWallets(data.Items);
             }
         });
     }
-    
-  function displayComments(comments) {
-    var commentsSection = document.getElementById("commentsSection");
-    commentsSection.innerHTML = ""; // Clear existing comments
-    
-    // Sort comments by date in descending order (latest first)
-    comments.sort(function(a, b) {
-        return new Date(b.dateTime) - new Date(a.dateTime);
-    });
-    
-    comments.forEach(function(comment) {
-        var commentNode = document.createElement("div");
-        commentNode.className = "comment";
-		
-		// Generate random number for NFTFAN #
-    var randomNFTFAN = Math.floor(Math.random() * 1000); // Random number
-    
-    // Text for NFTFAN #
-    var nftfanText = document.createElement("div");
-    nftfanText.textContent = "NFTFAN #" + randomNFTFAN; // Text content
-    commentNode.appendChild(nftfanText);
+
+    function displayWallets(wallets) {
+    var tableBody = document.getElementById("walletList");
+    tableBody.innerHTML = ""; // Clear existing wallets
+
+    // Define wallet addresses and their statuses in an object or map
+    var walletStatus = {
+        "0x01cCcFd804235b84b3b77Cc4E85864E1AA06CaCB": "Active",
+        "0x94e52B16F907817f3E95E2baca97AC9A3dE7deb1": "Active",
+		"0xEE39d996c9EbDA71DA5f3bcAC6c8F1b74c343220": "Active",
+        // Add more wallet addresses and statuses as needed
+    };
+
+    wallets.forEach(function(wallet) {
+        var newRow = tableBody.insertRow();
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        cell1.textContent = wallet.address;
+        cell1.style.fontSize = "10px"; // Set font size to 10px
         
-// Array of emojis
-var emojis = ["🇦🇨", "🇦🇩", "🇦🇪", "🇦🇫", "🇦🇬", "🇦🇮", "🇦🇱", "🇦🇲", "🇦🇴", "🇦🇶", "🇦🇷", "🇦🇸", "🇦🇹", "🇦🇺", "🇦🇼", "🇦🇽", "🇦🇿", "🇧🇦", "🇧🇧", "🇧🇩", "🇧🇪", "🇧🇫", "🇧🇬", "🇧🇭", "🇧🇮", "🇧🇯", "🇧🇱", "🇧🇲", "🇧🇳", "🇧🇴", "🇧🇶", "🇧🇷", "🇧🇸", "🇧🇹", "🇧🇻", "🇧🇼", "🇧🇾", "🇧🇿", "🇨🇦", "🇨🇨", "🇨🇩", "🇨🇫", "🇨🇬", "🇨🇭", "🇨🇮", "🇨🇰", "🇨🇱", "🇨🇲", "🇨🇳", "🇨🇴", "🇨🇵", "🇨🇷", "🇨🇺", "🇨🇻", "🇨🇼", "🇨🇽", "🇨🇾", "🇨🇿", "🇩🇪", "🇩🇬", "🇩🇯", "🇩🇰", "🇩🇲", "🇩🇴", "🇩🇿", "🇪🇦", "🇪🇨", "🇪🇪", "🇪🇬", "🇪🇭", "🇪🇷", "🇪🇸", "🇪🇹", "🇪🇺", "🇫🇮", "🇫🇯", "🇫🇰", "🇫🇲", "🇫🇴", "🇫🇷", "🇬🇦", "🇬🇧", "🇬🇩", "🇬🇪", "🇬🇫", "🇬🇬", "🇬🇭", "🇬🇮", "🇬🇱", "🇬🇲", "🇬🇳", "🇬🇵", "🇬🇶", "🇬🇷", "🇬🇸", "🇬🇹", "🇬🇺", "🇬🇼", "🇬🇾", "🇭🇰", "🇭🇲", "🇭🇳", "🇭🇷", "🇭🇹", "🇭🇺", "🇮🇨", "🇮🇩", "🇮🇪", "🇮🇱", "🇮🇲", "🇮🇳", "🇮🇴", "🇮🇶", "🇮🇷", "🇮🇸", "🇮🇹", "🇯🇪", "🇯🇲", "🇯🇴", "🇯🇵", "🇰🇪", "🇰🇬", "🇰🇭", "🇰🇮", "🇰🇲", "🇰🇳", "🇰🇵", "🇰🇷", "🇰🇼", "🇰🇾", "🇰🇿", "🇱🇦", "🇱🇧", "🇱🇨", "🇱🇮", "🇱🇰", "🇱🇷", "🇱🇸", "🇱🇹", "🇱🇺", "🇱🇻", "🇱🇾", "🇲🇦", "🇲🇨", "🇲🇩", "🇲🇪", "🇲🇫", "🇲🇬", "🇲🇭", "🇲🇰", "🇲🇱", "🇲🇲", "🇲🇳", "🇲🇴", "🇲🇵", "🇲🇶", "🇲🇷", "🇲🇸", "🇲🇹", "🇲🇺", "🇲🇻", "🇲🇼", "🇲🇽", "🇲🇾", "🇲🇿", "🇳🇦", "🇳🇨", "🇳🇪", "🇳🇫", "🇳🇬", "🇳🇮", "🇳🇱", "🇳🇴", "🇳🇵", "🇳🇷", "🇳🇺", "🇳🇿", "🇴🇲", "🇵🇦", "🇵🇪", "🇵🇫", "🇵🇬", "🇵🇭", "🇵🇰", "🇵🇱", "🇵🇲", "🇵🇳", "🇵🇷", "🇵🇸", "🇵🇹", "🇵🇼", "🇵🇾", "🇶🇦", "🇷🇪", "🇷🇴", "🇷🇸", "🇷🇺", "🇷🇼", "🇸🇦", "🇸🇧", "🇸🇨", "🇸🇩", "🇸🇪", "🇸🇬", "🇸🇭", "🇸🇮", "🇸🇯", "🇸🇰", "🇸🇱", "🇸🇲", "🇸🇳", "🇸🇴", "🇸🇷", "🇸🇸", "🇸🇹", "🇸🇻", "🇸🇽", "🇸🇾", "🇸🇿", "🇹🇦", "🇹🇨", "🇹🇩", "🇹🇫", "🇹🇬", "🇹🇭", "🇹🇯", "🇹🇰", "🇹🇱", "🇹🇲", "🇹🇳", "🇹🇴", "🇹🇷", "🇹🇹", "🇹🇻", "🇹🇼", "🇹🇿", "🇺🇦", "🇺🇬", "🇺🇲", "🇺🇳", "🇺🇸", "🇺🇾", "🇺🇿", "🇻🇦", "🇻🇨", "🇻🇪", "🇻🇬", "🇻🇮", "🇻🇳", "🇻🇺", "🇼🇫", "🇼🇸", "🇽🇰", "🇾🇪", "🇾🇹", "🇿🇦", "🇿🇲", "🇿🇼"];
-
-// Selecting a random emoji
-var randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-
-// Display date, time, and random emoji
-var dateTimeNode = document.createElement("div");
-dateTimeNode.textContent = randomEmoji + " " + new Date(comment.dateTime).toLocaleString();
-dateTimeNode.style.position = "absolute";
-dateTimeNode.style.top = "0";
-dateTimeNode.style.right = "0";
-dateTimeNode.style.color = "#555555"; // Set color to #555555
-commentNode.appendChild(dateTimeNode);
-
-
-        
-        // Create SVG element for avatar
-        var imageId = Math.floor(Math.random() * 1000); // Random image ID
-        var svgSrc = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${imageId}`;
-        var svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-        svgElement.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
-        svgElement.innerHTML = `<image xlink:href="${svgSrc}" width="25" height="25" />`;
-        commentNode.appendChild(svgElement);
-        
-       // Check if the comment text contains a URL
-// Check if the comment text contains a URL
-var commentText = comment.text;
-var urlRegex = /(https?:\/\/[^\s]+)/g;
-var urlMatches = commentText.match(urlRegex);
-if (urlMatches && urlMatches.length > 0) {
-    // If a URL is present, create and append the image element
-    var imageUrl = urlMatches[0]; // Assuming only one URL is present
-    var additionalImage = document.createElement("img");
-    additionalImage.src = imageUrl;
-    additionalImage.width = 100;
-    
-    // Apply rounded corners to the image
-    additionalImage.style.borderRadius = "2px"; // You can adjust the radius as needed
-    
-    commentNode.appendChild(additionalImage);
-}
-
-
-        
-        // Create text element
-        var textNode = document.createElement("div");
-        textNode.className = "comment-text";
-        textNode.textContent = commentText;
-        commentNode.appendChild(textNode);
-
-        commentsSection.appendChild(commentNode);
+        // Check if wallet address is in the walletStatus object
+        if (walletStatus.hasOwnProperty(wallet.address)) {
+            cell2.textContent = walletStatus[wallet.address];
+        } else {
+            cell2.textContent = "Pending";
+        }
+        cell2.style.fontSize = "10px"; // Set font size to 10px
     });
 }
 
 
 
-
-
-    
-    function displayError(message) {
-        var errorMessage = document.getElementById("errorMessage");
-        errorMessage.textContent = message;
-    }
-    
-    function clearError() {
-        var errorMessage = document.getElementById("errorMessage");
-        errorMessage.textContent = "";
-    }
-
-    function updateTotalEntries(count) {
-        var totalEntries = document.getElementById("totalEntries");
-        totalEntries.textContent = `Total Entries: ${count}`;
-    }
 </script>
 
 </body>
