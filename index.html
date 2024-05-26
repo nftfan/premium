@@ -10,34 +10,34 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #1e1e1e; /* Dark background */
-        color: #fff; /* Light text */
+        background-color: #1e1e1e;
+        color: #fff;
     }
     .container {
         width: 90%;
-        max-width: 800px; /* Max width of 800px */
+        max-width: 800px;
         margin: 0 auto;
         padding: 20px;
-        text-align: center; /* Center align content */
+        text-align: center;
     }
     h1 {
         margin-bottom: 20px;
     }
     .image-container {
         border-radius: 10px;
-        border: 1px solid #959595; /* Blue border */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
-        overflow: hidden; /* Hide overflowing images */
+        border: 1px solid #959595;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
         margin-bottom: 20px;
     }
     .moving-images {
         display: flex;
-        overflow-x: auto; /* Horizontal scrolling for images */
+        overflow-x: auto;
     }
     .moving-images img {
-        max-height: 200px; /* Adjust image height */
+        max-height: 200px;
         margin: 10px;
-        border-radius: 10px; /* Rounded corners */
+        border-radius: 10px;
     }
     table {
         width: 100%;
@@ -46,113 +46,105 @@
     }
     th, td {
         padding: 10px;
-        border-bottom: 1px solid #555; /* Dark border */
+        border-bottom: 1px solid #555;
         text-align: left;
     }
     th {
-        background-color: #333333 ; /* Green background */
-        color: #fff; /* Light text */
+        background-color: #333;
+        color: #fff;
     }
     td {
-        background-color: #222; /* Dark background */
+        background-color: #222;
     }
     input[type="text"] {
-        width: calc(100% - 200px); /* Adjust input width */
+        width: calc(100% - 200px);
         padding: 10px;
         border: none;
         border-radius: 5px;
         margin-bottom: 10px;
     }
-     button {
+    button {
         padding: 10px 20px;
-        background-color: #2081e2; /* Green button */
-        color: #fff; /* Light text */
+        background-color: #2081e2;
+        color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s ease; /* Smooth transition */
+        transition: background-color 0.3s ease;
     }
     button:hover {
-        background-color: #45a049; /* Darker green on hover */
+        background-color: #45a049;
     }
-
+    .premium-count {
+        font-size: 24px;
+        margin-bottom: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
     <h1 style="font-size: 20px;">NFTFAN PREMIUM MEMBERS</h1>
-	<p style="font-size: 10px;">Following Free NFTs are Coming up next to active premium members.</p>
+    <p style="font-size: 10px;">Following Free NFTs are Coming up next to active premium members.</p>
 
     <div class="image-container">
         <div class="moving-images">
-		<img src="https://i.seadn.io/s/raw/files/c9b8c93286e57953f4885a4b05df9194.png?auto=format&dpr=1&w=1000" alt="Image 2">
+            <img src="https://i.seadn.io/s/raw/files/c9b8c93286e57953f4885a4b05df9194.png?auto=format&dpr=1&w=1000" alt="Image 2">
             <img src="https://i.seadn.io/s/raw/files/5b0256cfc78fbc642e1d125ecbcefc88.gif?auto=format&dpr=1&w=1000" alt="Image 1">
-            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
-			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
-            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
-			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
-            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
-			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
-            <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
-			<img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 1">
             <img src="https://pbs.twimg.com/media/GM5sk2DWIAAHVUn?format=jpg&name=small" alt="Image 2">
             <!-- Add more images here -->
         </div>
     </div>
-    
+
     <p style="font-size: 12px; background-color: #f1f1f1; color: #333; border: 1px solid #ccc; border-radius: 4px; padding: 15px; line-height: 1.5;">
-    To activate your premium membership <br> Pay <strong> 1 MATIC </strong> activation fee to our official wallet: <br>
-    <strong>0x92d550cdbc234211957bd1b579d962c885a127ba</strong>
-</p>
+        To activate your premium membership <br> Pay <strong>1 MATIC</strong> activation fee to our official wallet: <br>
+        <strong>0x92d550cdbc234211957bd1b579d962c885a127ba</strong>
+    </p>
 
-
-
-
-
+    <div class="premium-count" id="premiumCount">Premium Members: 0</div>
 
     <input type="text" id="walletAddress" placeholder="Enter your wallet address">
     <button onclick="addWallet()">SUBSCRIBE</button>
 
-   <table>
-    <thead>
-        <tr>
-            <th style="font-size: 10px;">Wallet Address</th>
-            <th style="font-size: 10px;">Subscription</th>
-        </tr>
-    </thead>
-    <tbody id="walletList">
-        <!-- Wallet addresses will be displayed here -->
-    </tbody>
-</table>
-
+    <table>
+        <thead>
+            <tr>
+                <th style="font-size: 10px;">Wallet Address</th>
+                <th style="font-size: 10px;">Subscription</th>
+            </tr>
+        </thead>
+        <tbody id="walletList">
+            <!-- Wallet addresses will be displayed here -->
+        </tbody>
+    </table>
 </div>
 
 <script>
-    // Configure AWS SDK
     AWS.config.update({
         region: 'eu-north-1',
         credentials: new AWS.Credentials('AKIAVRUVVVUM4LQ3RDUF', 'WYQwQKduC8wF+7tEOASMOwqlDdS6LlAIr4x1R5U0')
     });
 
     var dynamodb = new AWS.DynamoDB.DocumentClient();
-    var tableName = 'prefan'; // Updated table name
+    var tableName = 'prefan';
 
-    // Load wallet addresses from DynamoDB when the page loads
     window.onload = function() {
         loadWallets();
     };
 
     function addWallet() {
         var walletAddress = document.getElementById("walletAddress").value.trim();
-        var walletRegex = /^(0x)?[0-9a-fA-F]{40}$/; // Regular expression to validate Ethereum wallet addresses
+        var walletRegex = /^(0x)?[0-9a-fA-F]{40}$/;
 
         if (!walletRegex.test(walletAddress)) {
             alert("Please enter a valid Polygon Matic wallet address!");
             return;
         }
 
-        // Check if the wallet already exists
         var existingWallets = document.querySelectorAll("#walletList td:first-child");
         for (var i = 0; i < existingWallets.length; i++) {
             if (existingWallets[i].textContent === walletAddress) {
@@ -164,10 +156,10 @@
         var params = {
             TableName: tableName,
             Item: {
-                prefan: Date.now().toString(), // Primary key attribute
-                walletId: 'wallet_' + Date.now().toString(), // Unique wallet ID
+                prefan: Date.now().toString(),
+                walletId: 'wallet_' + Date.now().toString(),
                 address: walletAddress,
-                dateTime: new Date().toISOString() // Date and time attribute
+                dateTime: new Date().toISOString()
             }
         };
 
@@ -175,10 +167,7 @@
             if (err) {
                 alert("Error adding wallet to DynamoDB: " + err.message);
             } else {
-                console.log("Successfully added wallet to DynamoDB", data);
-                loadWallets(); // Reload wallets after adding
-
-                // Animate the newly added wallet
+                loadWallets();
                 var newWalletRow = document.querySelector("#walletList tr:last-child");
                 newWalletRow.style.opacity = 0;
                 setTimeout(function() {
@@ -188,7 +177,6 @@
             }
         });
 
-        // Clear input field
         document.getElementById("walletAddress").value = "";
     }
 
@@ -207,61 +195,58 @@
     }
 
     function displayWallets(wallets) {
-    var tableBody = document.getElementById("walletList");
-    tableBody.innerHTML = ""; // Clear existing wallets
+        var tableBody = document.getElementById("walletList");
+        tableBody.innerHTML = "";
 
-    // Define wallet addresses and their statuses in an object or map
-    var walletStatus = {
-        "0x01cCcFd804235b84b3b77Cc4E85864E1AA06CaCB": "Active",
-        "0x94e52B16F907817f3E95E2baca97AC9A3dE7deb1": "Active",
-		"0xE1E75c550387d5323a11864cE9693D775c512b7E": "Active",
-	    "0x5B5aa424F4F8034040f427945E5DB197B02334ba": "Active",
-	    "0x3021bf351eee161dca2a1d4ef114e9bafecba8c8": "Active",
-	    "0x039BFD17895647f880bE125b366ab6736e83594B": "Active",
-	    "0x8f6D305AfAa9F9ABa2DF4683057aDf4F7Db4Ab17": "Active",
-	    "0x12772Bd233dE6a6E78583849DB0d0674150F3F8d": "Active",
-	    "0x7eC7a017944a02E432c052169bD0333EF4e47eB5": "Active",
-	     "0x45a03DC6b97ba70A1fc14777563dd6775548ee94": "Active",
-	    "0x7D5D3De09aC687048e3a57F3546f3a8BD433b3e1": "Active",
-	    "0x1f45180E24d780bbd96650A85Eb342eDC9dBdfeF": "Active",
-	    "0x916c2Cd2F87c0E9D7a02B76AA8bA6cB6586187D4": "Active",
-	    "0x9f2E762F8A1b151a05a0F24C81873c98b0bBD729": "Active",
-	    "0xae15c0763131f4F8975B2Fad479e112325AFD6D6": "Active",
-        // Add more wallet addresses and statuses as needed
-    };
+        var walletStatus = {
+            "0x01cCcFd804235b84b3b77Cc4E85864E1AA06CaCB": "Active",
+            "0x94e52B16F907817f3E95E2baca97AC9A3dE7deb1": "Active",
+            "0xE1E75c550387d5323a11864cE9693D775c512b7E": "Active",
+            "0x5B5aa424F4F8034040f427945E5DB197B02334ba": "Active",
+            "0x3021bf351eee161dca2a1d4ef114e9bafecba8c8": "Active",
+            "0x039BFD17895647f880bE125b366ab6736e83594B": "Active",
+            "0x8f6D305AfAa9F9ABa2DF4683057aDf4F7Db4Ab17": "Active",
+            "0x12772Bd233dE6a6E78583849DB0d0674150F3F8d": "Active",
+            "0x7eC7a017944a02E432c052169bD0333EF4e47eB5": "Active",
+            "0x45a03DC6b97ba70A1fc14777563dd6775548ee94": "Active",
+            "0x7D5D3De09aC687048e3a57F3546f3a8BD433b3e1": "Active",
+            "0x1f45180E24d780bbd96650A85Eb342eDC9dBdfeF": "Active",
+            "0x916c2Cd2F87c0E9D7a02B76AA8bA6cB6586187D4": "Active",
+            "0x9f2E762F8A1b151a05a0F24C81873c98b0bBD729": "Active",
+		"0x77325c5f7dB11608C80250920487DF9F75fAb74c": "Active",
+            "0xae15c0763131f4F8975B2Fad479e112325AFD6D6": "Active"
+        };
 
-    wallets.forEach(function(wallet) {
-        var newRow = tableBody.insertRow();
-        var cell1 = newRow.insertCell(0);
-        var cell2 = newRow.insertCell(1);
-        cell1.textContent = wallet.address;
-        cell1.style.fontSize = "10px"; // Set font size to 10px
-        
-        // Create a tab element for status display
-        var statusTab = document.createElement("div");
-        statusTab.textContent = walletStatus.hasOwnProperty(wallet.address) ? walletStatus[wallet.address] : "Pending";
-        statusTab.style.padding = "5px 10px";
-        statusTab.style.borderRadius = "5px";
-        statusTab.style.fontSize = "10px";
-        
-        // Apply styles based on status
-        if (walletStatus.hasOwnProperty(wallet.address)) {
-            statusTab.style.backgroundColor = "green"; // Active status with green background
-            statusTab.style.color = "white"; // Active status text color
-        } else {
-            statusTab.style.backgroundColor = "red"; // Pending status with red background
-            statusTab.style.color = "white"; // Pending status text color
-        }
-        
-        // Append status tab to the cell
-        cell2.appendChild(statusTab);
-    });
-}
+        var activeCount = 0;
 
+        wallets.forEach(function(wallet) {
+            var newRow = tableBody.insertRow();
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            cell1.textContent = wallet.address;
+            cell1.style.fontSize = "10px";
 
+            var statusTab = document.createElement("div");
+            if (walletStatus.hasOwnProperty(wallet.address)) {
+                statusTab.textContent = walletStatus[wallet.address];
+                statusTab.style.backgroundColor = "green";
+                statusTab.style.color = "white";
+                activeCount++;
+            } else {
+                statusTab.textContent = "Pending";
+                statusTab.style.backgroundColor = "red";
+                statusTab.style.color = "white";
+            }
+            statusTab.style.padding = "5px 10px";
+            statusTab.style.borderRadius = "5px";
+            statusTab.style.fontSize = "10px";
+            cell2.appendChild(statusTab);
+        });
 
-
+        document.getElementById("premiumCount").textContent = "Premium Members: " + activeCount;
+    }
 </script>
 
 </body>
 </html>
+
